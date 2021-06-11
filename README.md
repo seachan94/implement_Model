@@ -10,6 +10,9 @@
     
     Finsh Kmeans Algorithm using tensorflow
     
+    난수 데이터를 생성하여 한번 더 비교
+    numpy array 비교 바꾸어서 
+    
     
     
     
