@@ -14,5 +14,13 @@
     numpy array 비교 바꾸어서 
     
     
+### [2021 - 06 - 19 ~]
+
+    MF는 선형으로 연산하기 때문에 User-user or item-item 간의 latent Factor를 알지 못함
+    이를 해결하기 위해서 Deep Learning 연산을 통해 Latent Factor를 알 수 있도록 함
+    low latent Fator = MF 와 high latent Factor = MLP 연산을 같이 처리하여 
+    성능 척도 증가시킴
     
+    model -> GMF/DMF/MLP
+   
     
