@@ -24,3 +24,8 @@
     model -> GMF/DMF/MLP
    
     loder / run / metric 함수 추가
+    
+### [2021 - 06 -21]
+
+    DMF - high order latent and low order latent를 모두 파악할 수 있고
+    feature embedding이 필요 하지 않는 MLP + MF 기발 DMF 복습
