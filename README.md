@@ -29,3 +29,4 @@
 
     DMF - high order latent and low order latent를 모두 파악할 수 있고
     feature embedding이 필요 하지 않는 MLP + MF 기발 DMF 복습
+    refectoring DFM
