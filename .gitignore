@@ -4,3 +4,5 @@
 *.xls
 *.gz
 *.txt
+venv/
+__pycache__/
