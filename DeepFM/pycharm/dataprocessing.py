@@ -47,9 +47,11 @@ class Dataprocessing:
 
     def run(self):
 
-        self.checkcolumn()
+        #self.checkcolumn()
         x_continue = self.continues(config.CONTINUE_FIELD)
         x_category = self.discrete(config.Categorical_FIELD)
+
+
 
         if self.field_index:
             self.make_Modified_Field_Index(x_category.columns)
@@ -60,7 +62,7 @@ class Dataprocessing:
 
 data = pd.read_csv(r'C:\Users\KTDS\Desktop\im\DeepFM\data\adult_csv.csv')
 
-
+'''
 config.FIELDS = list(data.columns)
 
 config.CONTINUE_FIELD = ['age', 'fnlwgt', 'education-num',
@@ -69,8 +71,7 @@ config.Categorical_FIELD = list(set(config.FIELDS).difference(config.CONTINUE_FI
 
 cls = Dataprocessing(data,False)
 a = cls.run()
-print(config.Modified_Field_Index)
-'''
+
 CONTINUE_FIELD = ["a","b","c"]
 Categorical_FIELD = ["d","e","f"]
 FIELDS = CONTINUE_FIELD+Categorical_FIELD
@@ -89,5 +90,3 @@ print(a)
 
 
 '''
-
-
