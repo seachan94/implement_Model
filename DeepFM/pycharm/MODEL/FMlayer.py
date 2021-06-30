@@ -42,19 +42,19 @@ class FMlayer(tf.keras.layers.Layer):
         #embedding layer 통과
         new_inputs = tf.math.multiply(x_batch,embeds)# 배치별 데이터의 feature들을 embedding 하여 표기한다 -> 각 feature마다 embedding값 되는 집합들의 모음
 
-        # <w,x>
+
         linear_terms = tf.reduce_sum(
             tf.math.multiply(self.w, inputs), axis=1, keepdims=False)
-        print("linear_terms", linear_terms, "\n")
-        print("linear_termsa", tf.square(tf.reduce_sum(new_inputs, [1, 2])), "\n")
-        print("linear_terms b", tf.reduce_sum(tf.square(new_inputs), [1, 2]), "\n")
+        # sigma(wx)
+        #각 데이터 마다 가중치값 확보
 
 
-        # (batch_size, )
-        interactions = 0.5 * tf.subtract(
-            tf.square(tf.reduce_sum(new_inputs, [1, 2])),
-            tf.reduce_sum(tf.square(new_inputs), [1, 2])
-        )
+        vxsquare = tf.square(tf.reduce_sum(new_inputs,axis = [1,2]))
+        eachsquare = tf.reduce_sum(tf.square(new_inputs, axis = [1,2]))
+        interactions = 0.5 *tf.subtract(vxsquare,eachsquare)
+
+
+
 
         linear_terms = tf.reshape(linear_terms, [-1, 1])
         interactions = tf.reshape(interactions, [-1, 1])
@@ -63,26 +63,4 @@ class FMlayer(tf.keras.layers.Layer):
 
         return y_fm, new_inputs
 
-
-
-config.CONTINUE_FIELD = ["a","b","c"]
-config.Categorical_FIELD = ["d","e","f"]
-config.FIELDS = config.CONTINUE_FIELD +config.Categorical_FIELD
-
-col = ["a","b","c","d","e","f"]
-
-da = [[1,2,3,"q","w","e"],[4,5,6,"r","t","y"],[7,8,9,"u","i","o"]]
-
-f = pd.DataFrame(da,columns=col)
-
-
-cls = dataprocessing.Dataprocessing(f,False)
-
-a = cls.run()
-
-b = FMlayer.call()
-
-print("sechan ", inputs)
-print("secha y", y_fm)
-print("seacacha ", new_inputs)
 
